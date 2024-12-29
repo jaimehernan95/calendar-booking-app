@@ -1,2 +1,3 @@
 "use strict";
-console.log("Hello TypeScript");
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./app"); // Import app.ts logic

@@ -1,1 +1,1 @@
-console.log("Hello TypeScript");
+import './app'; // Import app.ts logic
