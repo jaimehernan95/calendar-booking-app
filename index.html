@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plumber Booking Schedule</title>
+  <title>Booking Schedule</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="dist/app.js"></script>
- <!-- Link to the compiled JavaScript file -->
-
+  <script src="dist/app.js" defer></script>
 </head>
 <body>
-  <h1>Plumber Schedule</h1>
-  <table id="schedule">
-      <thead>
-          <tr>
-              <th>Day</th>
-              <th>Available Time</th>
-          </tr>
-      </thead>
-      <tbody>
-          <!-- Schedule rows will be dynamically generated here -->
-      </tbody>
-  </table>
-  <script src="dist/app.js"></script>
+  <h1>Booking Schedule</h1>
+  <div id="schedule-container">
+    <!-- The booking schedule will be generated dynamically -->
+  </div>
 </body>
-
 </html>

@@ -1,48 +1,64 @@
-// In app.ts
-const schedule = [
-  { day: 'Monday', time: '9:00 AM - 10:00 AM', booked: false },
-  { day: 'Monday', time: '10:00 AM - 11:00 AM', booked: false },
-  { day: 'Monday', time: '11:00 AM - 12:00 PM', booked: false },
-  { day: 'Tuesday', time: '9:00 AM - 10:00 AM', booked: false },
-  { day: 'Wednesday', time: '9:00 AM - 1:00 PM', booked: true }, // Already fully booked
-  { day: 'Thursday', time: '9:00 AM - 10:00 AM', booked: false },
-  { day: 'Friday', time: '9:00 AM - 10:00 AM', booked: false }
-];
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'];
+const bookedSlots: Record<string, string[]> = { Wednesday: ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM'] };
 
-const generateSchedule = () => {
-  const tableBody = document.querySelector('#schedule tbody')!;
-  
-  schedule.forEach((entry) => {
-      const row = document.createElement('tr');
-      
-      const dayCell = document.createElement('td');
-      dayCell.textContent = entry.day;
-      row.appendChild(dayCell);
-      
-      const timeCell = document.createElement('td');
-      timeCell.textContent = entry.time;
-      if (entry.booked) {
-          timeCell.style.color = 'red';  // Highlight booked times
-          timeCell.textContent += ' - Booked';
-      } else {
-          // Add a clickable button to allow booking
-          const bookButton = document.createElement('button');
-          bookButton.textContent = 'Book';
-          bookButton.onclick = () => bookTime(entry);
-          timeCell.appendChild(bookButton);
-      }
-      row.appendChild(timeCell);
-      
-      tableBody.appendChild(row);
+const scheduleContainer = document.getElementById('schedule-container') as HTMLElement;
+
+function createButton(day: string, time: string): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.textContent = bookedSlots[day]?.includes(time) ? 'Booked' : 'Book';
+  button.disabled = bookedSlots[day]?.includes(time) ?? false;
+
+  button.addEventListener('click', () => {
+    button.textContent = 'Booked';
+    button.disabled = true;
+    if (!bookedSlots[day]) bookedSlots[day] = [];
+    bookedSlots[day].push(time);
   });
-};
 
-const bookTime = (entry: { day: string; time: string; booked: boolean }) => {
-  // Handle booking logic (e.g., mark as booked, update UI)
-  entry.booked = true;
-  alert(`You have booked ${entry.day} from ${entry.time}`);
-  generateSchedule();  // Regenerate the table to reflect the booking
-};
+  return button;
+}
 
-// Call the function to generate the schedule when the page loads
-window.onload = generateSchedule;
+function createScheduleTable() {
+  if (!scheduleContainer) {
+    console.error('Error: schedule-container element not found.');
+    return;
+  }
+
+  const table = document.createElement('table');
+  table.classList.add('schedule-table');
+
+  // Create header row
+  const headerRow = document.createElement('tr');
+  const emptyHeader = document.createElement('th');
+  headerRow.appendChild(emptyHeader); // Empty top-left cell
+
+  days.forEach((day) => {
+    const th = document.createElement('th');
+    th.textContent = day;
+    headerRow.appendChild(th);
+  });
+
+  table.appendChild(headerRow);
+
+  // Create rows for each time
+  times.forEach((time) => {
+    const row = document.createElement('tr');
+    const timeCell = document.createElement('td');
+    timeCell.textContent = time;
+    row.appendChild(timeCell);
+
+    days.forEach((day) => {
+      const cell = document.createElement('td');
+      const button = createButton(day, time);
+      cell.appendChild(button);
+      row.appendChild(cell);
+    });
+
+    table.appendChild(row);
+  });
+
+  scheduleContainer.appendChild(table);
+}
+
+createScheduleTable();
