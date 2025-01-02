@@ -35,3 +35,9 @@ This app is designed for booking appointments for service providers such as carp
 1. Clone the repository:
    ```bash
    git clone https://github.com/jaimehernan95/typescript-app.git
+
+## Final Result
+
+This is the final result of the task. The image below shows the working calendar with time slot booking functionality.
+
+![Booking an appointment with a Plumber Final Result](assets/images/plumber.png)
