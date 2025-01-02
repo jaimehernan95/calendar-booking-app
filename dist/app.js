@@ -1,53 +1,241 @@
 "use strict";
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+// Days of the week
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// Times for the schedule
 const times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM'];
-const bookedSlots = { Wednesday: ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM'] };
-const scheduleContainer = document.getElementById('schedule-container');
-function createButton(day, time) {
-    var _a, _b, _c;
-    const button = document.createElement('button');
-    button.textContent = ((_a = bookedSlots[day]) === null || _a === void 0 ? void 0 : _a.includes(time)) ? 'Booked' : 'Book';
-    button.disabled = (_c = (_b = bookedSlots[day]) === null || _b === void 0 ? void 0 : _b.includes(time)) !== null && _c !== void 0 ? _c : false;
-    button.addEventListener('click', () => {
-        button.textContent = 'Booked';
-        button.disabled = true;
-        if (!bookedSlots[day])
-            bookedSlots[day] = [];
-        bookedSlots[day].push(time);
-    });
-    return button;
+// Booked slots for each month and week
+const bookedSlots = {
+    January: {
+        'Week 1': ['9:00 AM', '10:00 AM'],
+        'Week 2': ['1:00 PM'],
+        'Week 3': ['3:00 PM'],
+        'Week 4': [],
+        'Week 5': ['2:00 PM'],
+    },
+    February: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    March: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    April: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    May: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    June: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    July: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    August: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    September: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    October: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    November: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    December: {
+        'Week 1': [],
+        'Week 2': ['9:00 AM'],
+        'Week 3': [],
+        'Week 4': ['4:00 PM'],
+        'Week 5': ['10:00 AM'],
+    },
+    // Add more months as needed
+};
+// Create dropdown for month selection
+const monthSelect = document.createElement('select');
+// Event listener for month change
+monthSelect.addEventListener('change', updateSchedule);
+const monthDays = {
+    January: 31,
+    February: 28, // Leap year handling can be added later
+    March: 31,
+    April: 30,
+    May: 31,
+    June: 30,
+    July: 31,
+    August: 31,
+    September: 30,
+    October: 31,
+    November: 30,
+    December: 31,
+};
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+months.forEach((month, index) => {
+    const option = document.createElement('option');
+    option.value = index.toString();
+    option.textContent = month;
+    monthSelect.appendChild(option);
+});
+const container = document.getElementById('schedule-container');
+container === null || container === void 0 ? void 0 : container.appendChild(monthSelect);
+// Update the calendar and schedule when the month is changed
+function updateSchedule() {
+    const selectedMonth = months[parseInt(monthSelect.value)];
+    // Clear existing calendar and time slots
+    const calendarContainer = document.querySelector('.calendar-container');
+    if (calendarContainer)
+        calendarContainer.remove();
+    // Create new calendar view
+    createCalendarView(selectedMonth);
 }
-function createScheduleTable() {
-    if (!scheduleContainer) {
-        console.error('Error: schedule-container element not found.');
-        return;
-    }
+// Create the calendar view based on selected month
+function createCalendarView(month) {
+    const scheduleContainer = document.getElementById('schedule-container');
+    const calendarContainer = document.createElement('div');
+    calendarContainer.classList.add('calendar-container');
+    const daysInMonth = monthDays[month];
+    // Create a table to display the days of the month
     const table = document.createElement('table');
-    table.classList.add('schedule-table');
-    // Create header row
     const headerRow = document.createElement('tr');
-    const emptyHeader = document.createElement('th');
-    headerRow.appendChild(emptyHeader); // Empty top-left cell
-    days.forEach((day) => {
+    // Create header row for the days of the week
+    daysOfWeek.forEach((day) => {
         const th = document.createElement('th');
         th.textContent = day;
         headerRow.appendChild(th);
     });
     table.appendChild(headerRow);
-    // Create rows for each time
-    times.forEach((time) => {
+    // Create rows for each week
+    let row;
+    let dayOfMonth = 1;
+    for (let i = 0; i < 6; i++) { // Maximum 6 rows for a month
+        row = document.createElement('tr');
+        // Populate each cell with the day of the month
+        for (let j = 0; j < 7; j++) {
+            const cell = document.createElement('td');
+            const dayOfWeek = (dayOfMonth + j - 1) % 7;
+            if (dayOfMonth <= daysInMonth) {
+                const button = createDayButton(dayOfMonth, month, daysOfWeek[dayOfWeek]);
+                cell.appendChild(button);
+                dayOfMonth++;
+            }
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+        if (dayOfMonth > daysInMonth)
+            break;
+    }
+    calendarContainer.appendChild(table);
+    scheduleContainer.appendChild(calendarContainer);
+}
+// Create button for each day in the calendar
+function createDayButton(day, month, dayOfWeek) {
+    var _a, _b;
+    const button = document.createElement('button'); // Corrected this line to create a button
+    const isBooked = ((_b = (_a = bookedSlots[month]) === null || _a === void 0 ? void 0 : _a[day]) === null || _b === void 0 ? void 0 : _b.length) > 0;
+    button.textContent = isBooked ? `Booked` : `${dayOfWeek} ${day}`;
+    button.disabled = isBooked;
+    button.style.backgroundColor = isBooked ? 'red' : '#007BFF';
+    button.addEventListener('click', () => {
+        displayTimeSlots(day, month);
+    });
+    return button;
+}
+// Create a global state to keep track of booked slots
+let bookedSlotsState = {};
+// Display available time slots for a selected day
+function displayTimeSlots(day, month) {
+    var _a;
+    let timeSlotsContainer = document.getElementById('time-slots-container');
+    // Ensure timeSlotsContainer is properly created if it doesn't exist
+    if (!timeSlotsContainer) {
+        timeSlotsContainer = document.createElement('div');
+        timeSlotsContainer.id = 'time-slots-container';
+        document.body.appendChild(timeSlotsContainer);
+    }
+    // Clear existing time slots before displaying new ones
+    if (timeSlotsContainer) {
+        timeSlotsContainer.innerHTML = ''; // Clear previous content
+    }
+    // Get the already booked slots for the selected day
+    const availableSlots = ((_a = bookedSlots[month]) === null || _a === void 0 ? void 0 : _a[day]) || [];
+    const availableTimes = times.filter(time => !availableSlots.includes(time));
+    const slotTable = document.createElement('table');
+    const slotHeaderRow = document.createElement('tr');
+    const slotHeader = document.createElement('th');
+    slotHeader.textContent = `Available Time Slots for ${month} ${day}`;
+    slotHeaderRow.appendChild(slotHeader);
+    slotTable.appendChild(slotHeaderRow);
+    availableTimes.forEach(time => {
         const row = document.createElement('tr');
         const timeCell = document.createElement('td');
         timeCell.textContent = time;
         row.appendChild(timeCell);
-        days.forEach((day) => {
-            const cell = document.createElement('td');
-            const button = createButton(day, time);
-            cell.appendChild(button);
-            row.appendChild(cell);
-        });
-        table.appendChild(row);
+        const bookButtonCell = document.createElement('td');
+        const bookButton = document.createElement('button');
+        bookButton.textContent = 'Book';
+        bookButton.addEventListener('click', () => handleBooking(day, month, time, bookButton));
+        bookButtonCell.appendChild(bookButton);
+        row.appendChild(bookButtonCell);
+        slotTable.appendChild(row);
     });
-    scheduleContainer.appendChild(table);
+    // Append the table with available times to the container
+    if (timeSlotsContainer) {
+        timeSlotsContainer.appendChild(slotTable);
+    }
 }
-createScheduleTable();
+// Handle the booking action when a button is clicked
+function handleBooking(day, month, time, button) {
+    // Check if the slot is already booked
+    if (!bookedSlotsState[month])
+        bookedSlotsState[month] = {};
+    if (!bookedSlotsState[month][day])
+        bookedSlotsState[month][day] = new Set();
+    // Mark the slot as booked by adding it to the set
+    bookedSlotsState[month][day].add(time);
+    // Update the button text and disable it
+    button.textContent = 'Booked';
+    button.disabled = true;
+    button.style.backgroundColor = 'red';
+}
+// Initial load
+createCalendarView('January');
