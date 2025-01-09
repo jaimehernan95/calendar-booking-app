@@ -95,6 +95,12 @@ const bookedSlots: Record<string, Record<string, string[]>> = {
 
 // Create dropdown for month selection
 const monthSelect = document.createElement('select');
+// Add instructions for users
+const instructions = document.createElement('p');
+instructions.textContent = 'Click on the day button to book the time slot';
+instructions.style.textAlign = 'center'; // Optional: Center-align the text
+instructions.style.margin = '10px 0'; // Optional: Add some spacing
+
 // Event listener for month change
 monthSelect.addEventListener('change', updateSchedule);
 
@@ -188,19 +194,17 @@ function createCalendarView(month: string) {
 
 // Create button for each day in the calendar
 function createDayButton(day: number, month: string, dayOfWeek: string): HTMLButtonElement {
-  const button = document.createElement('button'); // Corrected this line to create a button
-
-  const isBooked = bookedSlots[month]?.[day]?.length > 0;
-  button.textContent = isBooked ? `Booked` : `${dayOfWeek} ${day}`;
-  button.disabled = isBooked;
-  button.style.backgroundColor = isBooked ? 'red' : '#007BFF';
-
+  const button = document.createElement('button');
+  button.textContent = `${day}`;
+  
   button.addEventListener('click', () => {
-    displayTimeSlots(day, month);
+      displayTimeSlots(day, month);
   });
 
   return button;
 }
+
+
 
 // Create a global state to keep track of booked slots
 let bookedSlotsState: { [month: string]: { [day: number]: Set<string> } } = {};
