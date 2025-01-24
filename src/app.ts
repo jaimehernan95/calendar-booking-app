@@ -20,77 +20,7 @@ const bookedSlots: Record<string, Record<string, string[]>> = {
     'Week 4': ['4:00 PM'],
     'Week 5': ['10:00 AM'],
   },
-  March: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  April: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  May: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  June: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  July: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  August: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  September: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  October: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  November: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  December: {
-    'Week 1': [],
-    'Week 2': ['9:00 AM'],
-    'Week 3': [],
-    'Week 4': ['4:00 PM'],
-    'Week 5': ['10:00 AM'],
-  },
-  // Add more months as needed
+  // Other months...
 };
 
 // Create dropdown for month selection
@@ -109,14 +39,7 @@ const monthDays: Record<string, number> = {
   February: 28, // Leap year handling can be added later
   March: 31,
   April: 30,
-  May: 31,
-  June: 30,
-  July: 31,
-  August: 31,
-  September: 30,
-  October: 31,
-  November: 30,
-  December: 31,
+  // Other months...
 };
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -176,8 +99,6 @@ function createCalendarView(month: string) {
 
       if (dayOfMonth <= daysInMonth) {
         const button = createDayButton(dayOfMonth, month, daysOfWeek[dayOfWeek as number]);
-
-
         cell.appendChild(button);
         dayOfMonth++;
       }
@@ -198,13 +119,11 @@ function createDayButton(day: number, month: string, dayOfWeek: string): HTMLBut
   button.textContent = `${day}`;
   
   button.addEventListener('click', () => {
-      displayTimeSlots(day, month);
+    displayTimeSlots(day, month);
   });
 
   return button;
 }
-
-
 
 // Create a global state to keep track of booked slots
 let bookedSlotsState: { [month: string]: { [day: number]: Set<string> } } = {};

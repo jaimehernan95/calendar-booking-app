@@ -1,0 +1,145 @@
+.calendar-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+th, td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+}
+
+button {
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  margin: 2px;
+  padding: 5px;
+  font-size: 14px;
+  transition: background-color .3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#time-slots-container {
+  background-color: #e9ecef;
+  border-radius: 8px;
+  width: 300px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+#time-slots-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#time-slots-container th {
+  color: #fff;
+  background-color: #28a745;
+}
+
+#time-slots-container td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#time-slots-container tr {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+#time-slots-container td:first-child {
+  width: 75%;
+}
+
+#time-slots-container td:last-child {
+  width: 25%;
+}
+
+#time-slots-container tr:nth-child(2n) {
+  background-color: #f9f9f9;
+}
+
+select {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+select:focus {
+  border-color: #007bff;
+}
+
+option {
+  font-size: 16px;
+}
+
+body {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+#time-slots-container {
+  margin-top: 20px;
+}
+
+#time-slots-container div {
+  margin: 10px 0;
+}
+
+button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+/*# sourceMappingURL=index.4d663569.css.map */

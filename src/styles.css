@@ -1,0 +1,152 @@
+/* Styles for the calendar container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+  
+th, td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+  
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+  
+td {
+    width: 50px;
+    height: 50px;
+}
+  
+button {
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    font-size: 14px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+  
+button:hover {
+    background-color: #0056b3;
+}
+  
+button:disabled {
+    background-color: red;
+    cursor: not-allowed;
+}
+  
+/* Styles for the available time slots section */
+#time-slots-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+#time-slots-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+#time-slots-container th {
+    background-color: #28a745;
+    color: white;
+}
+  
+#time-slots-container td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* New styling to ensure buttons are next to the time */
+#time-slots-container tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#time-slots-container td:first-child {
+    width: 75%;
+}
+
+#time-slots-container td:last-child {
+    width: 25%;
+}
+
+#time-slots-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+select {
+    margin: 20px 0;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+  
+select:focus {
+    border-color: #007BFF;
+}
+  
+option {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#time-slots-container {
+    margin-top: 20px;
+}
+
+#time-slots-container div {
+    margin: 10px 0;
+}
+
+button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
