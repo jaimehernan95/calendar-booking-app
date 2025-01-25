@@ -1,3 +1,18 @@
+import './app'; // Import app.ts logic
+
+import i18next from 'i18next';
+
+export function updateUI() {
+    console.log(`Updating UI for language: ${i18next.language}`);
+    document.getElementById('title')!.textContent = i18next.t('title');
+    document.getElementById('instructions')!.textContent = i18next.t('instructions');
+}
+
+export function setupCalendar() {
+    console.log('Calendar setup logic goes here.');
+}
+
+
 // Days of the week
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

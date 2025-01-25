@@ -1,4 +1,6 @@
 {
+  "title": "Programme de réservation",
+  "instructions": "Cliquez sur le bouton du jour pour réserver un créneau horaire",
   "months": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
   "days": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
 }

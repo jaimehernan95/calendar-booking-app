@@ -1,5 +1,6 @@
 {
+  "title": "Booking Schedule",
+  "instructions": "Click on the day button to book the time slot",
   "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
   "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 }
-
