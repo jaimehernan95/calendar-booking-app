@@ -66,10 +66,9 @@ This app is designed for booking appointments with service providers such as car
    git clone https://github.com/jaimehernan95/typescript-app.git
 
 
-![Booking an appointment with a Plumber Final Result]
 
 **English**:
-(assets/images/plumber.png)
+![Booking an appointment with a Plumber Final Result](assets/images/plumber.png)
 
 **French**:
-(assets/images/frenchPage.png)
+![Booking an appointment with a Plumber Final Result](assets/images/frenchPage.png)
