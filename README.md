@@ -72,3 +72,7 @@ This app is designed for booking appointments with service providers such as car
 
 **French**:
 ![Booking an appointment with a Plumber Final Result](assets/images/frenchPage.png)
+
+# My calendar-booking-app.
+
+This project is maintained by the developer. (Last updated: {{CURRENT_YEAR}})
