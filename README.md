@@ -42,6 +42,14 @@ This app is designed for booking appointments with service providers such as car
 
 ---
 
+## **Recent Updates**
+
+1. **Title and Subtitle Translation**: The app now includes translation for the title and subtitle of the booking interface, switching seamlessly between English and French.
+2. **Days of the Week Translations**: The days of the week have been updated to display in both English and French based on the language selection.
+3. **Next Steps**: The upcoming feature will include updating the months for French translations to ensure full localization.
+
+---
+
 ## **Future Improvements**
 
 1. **Backend Integration**: The app will integrate with a cloud-based backend (e.g., Firebase or AWS) to manage live data and provide real-time updates on availability.
@@ -57,15 +65,11 @@ This app is designed for booking appointments with service providers such as car
    ```bash
    git clone https://github.com/jaimehernan95/typescript-app.git
 
-## How to Run the App Locally
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/jaimehernan95/typescript-app.git
+![Booking an appointment with a Plumber Final Result]
 
+**English**:
+(assets/images/plumber.png)
 
-## Final Result
-
-This is the final result of the task. The image below shows the working calendar with time slot booking functionality.
-
-![Booking an appointment with a Plumber Final Result](assets/images/plumber.png)
+**French**:
+(assets/images/frenchPage.png)
