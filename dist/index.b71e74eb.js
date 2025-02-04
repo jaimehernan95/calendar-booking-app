@@ -639,10 +639,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 },{"i18next":"7BWx6","./app":"kuM8f","./locales/en.json":"lMV9U","./locales/fr.json":"4pnRD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lMV9U":[function(require,module,exports,__globalThis) {
-module.exports = JSON.parse("{\"title\":\"Booking Schedule\",\"instructions\":\"Click on the day button to book the time slot\",\"months\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"days\":[\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"]}");
+module.exports = JSON.parse("{\"title\":\"Booking Schedule\",\"instructions\":\"Click on the day button to book the time slot\",\"months\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"daysOfWeek\":[\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"],\"times\":[\"9:00 AM\",\"10:00 AM\",\"11:00 AM\",\"12:00 PM\",\"1:00 PM\",\"2:00 PM\",\"3:00 PM\",\"4:00 PM\"]}");
 
 },{}],"4pnRD":[function(require,module,exports,__globalThis) {
-module.exports = JSON.parse('{"title":"Programme de r\xe9servation","instructions":"Cliquez sur le bouton du jour pour r\xe9server un cr\xe9neau horaire","months":["Janvier","F\xe9vrier","Mars","Avril","Mai","Juin","Juillet","Ao\xfbt","Septembre","Octobre","Novembre","D\xe9cembre"],"days":["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"]}');
+module.exports = JSON.parse('{"title":"Planning des r\xe9servations","instructions":"Cliquez sur le bouton du jour pour r\xe9server un cr\xe9neau horaire","months":["Janvier","F\xe9vrier","Mars","Avril","Mai","Juin","Juillet","Ao\xfbt","Septembre","Octobre","Novembre","D\xe9cembre"],"daysOfWeek":["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],"times":["9h00","10h00","11h00","12h00","13h00","14h00","15h00","16h00"]}');
 
 },{}]},["bTHtU","h7u1C"], "h7u1C", "parcelRequire94c2")
 

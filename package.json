@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "express": "^4.21.2",
-    "i18next": "^24.2.1"
+    "i18next": "^24.2.2"
   }
 }
