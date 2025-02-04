@@ -1,0 +1,29 @@
+name: Update README with Current Year
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch if it's not "main"
+  schedule:
+    - cron: '0 0 1 1 *'  # Optionally, run yearly to update the year
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update README with current year
+        run: |
+          current_year=$(date +%Y)
+          sed -i "s/{{CURRENT_YEAR}}/$current_year/" README.md
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add README.md
+          git commit -m "Update README with current year"
+          git push
